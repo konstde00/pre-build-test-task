@@ -1,0 +1,48 @@
+package service.impl;
+
+import dao.ProductDao;
+import java.util.List;
+import model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import service.ProductService;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+    private final ProductDao productDao;
+
+    @Autowired
+    public ProductServiceImpl(ProductDao productDao) {
+        this.productDao = productDao;
+    }
+
+    @Override
+    public Product add(Product product) {
+        return productDao.add(product);
+    }
+
+    @Override
+    public List<Product> getAll() {
+        return productDao.getAll();
+    }
+
+    @Override
+    public Product get(String uuid) {
+        return productDao.get(uuid).get();
+    }
+
+    @Override
+    public boolean exists(Product product) {
+        return productDao.exists(product);
+    }
+
+    @Override
+    public boolean existsWithSameId(String productUuId) {
+        return productDao.existsWithSameId(productUuId);
+    }
+
+    @Override
+    public Product update(Product product) {
+        return productDao.update(product);
+    }
+}
