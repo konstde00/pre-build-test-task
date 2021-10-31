@@ -15,7 +15,7 @@ public abstract class AbstractDao<T> {
         this.clazz = clazz;
     }
 
-    public T add(T t) {
+    public T save(T t) {
         Transaction transaction = null;
         Session session = null;
         try {
@@ -29,7 +29,7 @@ public abstract class AbstractDao<T> {
                 transaction.rollback();
             }
             throw new DataProcessingException("Can't insert "
-                    + clazz.getSimpleName() + "" + t, e);
+                    + clazz.getSimpleName() + " " + t, e);
         } finally {
             if (session != null) {
                 session.close();

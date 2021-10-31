@@ -1,4 +1,13 @@
+fileName="input.json";
 fileName="input.csv";
+fileName="input2.csv";
+fileName="input3.csv";
+urlName="https://test-api-heroku.herokuapp.com/testLink/1";
+urlName="https://test-api-heroku.herokuapp.com/testLink/2";
+urlName="https://test-api-heroku.herokuapp.com/testLink/3";
+urlName="https://test-api-heroku.herokuapp.com/testLink/4";
+urlName="https://test-api-heroku.herokuapp.com/testLink/5";
+
 
 
 

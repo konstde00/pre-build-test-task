@@ -5,7 +5,7 @@ import java.util.Optional;
 import model.Product;
 
 public interface ProductDao {
-    Product add(Product product);
+    Product save(Product product);
 
     List<Product> getAll();
 

@@ -11,7 +11,7 @@ public class ProductParserImpl implements ProductParser {
     private static final int NAME_INDEX = 1;
     private static final int AMOUNT_INDEX = 2;
     private static final int ID_BEGIN_INDEX = 16;
-    private static final int ID_END_INDEX = 50;
+    private static final int ID_END_INDEX = 48;
     private static final int NAME_BEGIN_INDEX = 13;
     private static final int AMOUNT_BEGIN_INDEX = 6;
 
@@ -27,13 +27,17 @@ public class ProductParserImpl implements ProductParser {
 
     private String getProductId(String data) {
         return data.split(COMMA)[ID_INDEX]
-                .substring(ID_BEGIN_INDEX, ID_END_INDEX);
+                .replaceAll("productUuid", "")
+                .replaceAll(":", "")
+                .replaceAll("\\{", "")
+                .replaceAll("\"", "");
     }
 
     private String getProductName(String data) {
-        return data.split(COMMA)[NAME_INDEX].substring(NAME_BEGIN_INDEX)
-                .substring(0, data.split(COMMA)[NAME_INDEX]
-                        .substring(NAME_BEGIN_INDEX).length() - 1);
+        return data.split(COMMA)[NAME_INDEX]
+                .replaceAll("productName", "")
+                .replaceAll(":", "")
+                .replaceAll("\"", "");
     }
 
     private int getAmount(String data) {

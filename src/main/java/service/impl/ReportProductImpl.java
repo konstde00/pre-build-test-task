@@ -30,7 +30,7 @@ public class ReportProductImpl implements ReportProduct {
                         .append("\"productUuid\":")
                         .append(product.getProductUuid())
                         .append("\",")
-                        .append("\"productName\":")
+                        .append("\"productName\":\"")
                         .append(product.getProductName())
                         .append("\",")
                         .append("\"amount\":")

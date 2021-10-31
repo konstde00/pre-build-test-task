@@ -4,8 +4,6 @@ import config.AppConfig;
 import dto.response.ProductResponseDto;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import model.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import service.impl.FileReader;
@@ -35,12 +33,6 @@ public class Application {
     public static void build() {
         consoleReaderUtil.readFromConsole();
 
-        try {
-            TimeUnit.SECONDS.sleep(20);
-        } catch (InterruptedException e) {
-            throw new RuntimeException("Exception in interruption", e);
-        }
-
         filePaths = DataSourceGetterUtil.getFilePaths();
         urls = DataSourceGetterUtil.getUrls();
 
@@ -59,7 +51,7 @@ public class Application {
             if (productService.exists(newProduct)) {
                 productService.update(newProduct);
             } else {
-                productService.add(newProduct);
+                productService.save(newProduct);
             }
         }
     }
@@ -73,7 +65,7 @@ public class Application {
             if (productService.exists(newProduct)) {
                 productService.update(newProduct);
             } else {
-                productService.add(newProduct);
+                productService.save(newProduct);
             }
         }
     }

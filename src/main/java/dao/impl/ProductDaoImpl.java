@@ -1,7 +1,5 @@
-package dao.impl;
+package dao;
 
-import dao.AbstractDao;
-import dao.ProductDao;
 import exception.DataProcessingException;
 import java.util.Optional;
 import model.Product;
@@ -15,8 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductDaoImpl extends AbstractDao<Product> implements ProductDao {
     @Autowired
-    private ProductDao productDao;
-
     public ProductDaoImpl(SessionFactory factory) {
         super(factory, Product.class);
     }
@@ -69,9 +65,8 @@ public class ProductDaoImpl extends AbstractDao<Product> implements ProductDao {
             transaction = session.beginTransaction();
             int newAmount = product.getAmount()
                     + get(product.getProductUuid()).get().getAmount();
-            Product newProduct = productDao.get(product.getProductUuid()).get();
-            newProduct.setAmount(newAmount);
-            session.update(newProduct);
+            product.setAmount(newAmount);
+            session.update(product);
             transaction.commit();
             return product;
         } catch (Exception e) {

@@ -4,7 +4,7 @@ import java.util.List;
 import model.Product;
 
 public interface ProductService {
-    Product add(Product product);
+    Product save(Product product);
 
     List<Product> getAll();
 
